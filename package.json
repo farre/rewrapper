@@ -9,7 +9,12 @@
   "categories": [
     "Formatters"
   ],
-  "activationEvents": ["*"],
+  "publisher": "farrese",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/farre/rewrapper"
+  },
+  "activationEvents": ["onLanguage:plaintext"],
   "main": "./extension.js",
   "contributes": {
     "configuration": {
