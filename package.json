@@ -1,0 +1,35 @@
+{
+  "name": "the-great-rewrapper",
+  "displayName": "The Great Rewrapper",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "activationEvents": ["*"],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "The Great Rewrapper",
+      "type": "object",
+      "properties": {
+        "the-great-rewrapper.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable The Great Rewrapper"
+        },
+        "the-great-rewrapper.column-length": {
+          "type": "number",
+          "default": 100,
+          "description": "Column Length"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "install": "if cd node_modules/rewrapper; then git pull; else git clone https://github.com/domenic/rewrapper.git node_modules/rewrapper; fi"
+  }
+}
