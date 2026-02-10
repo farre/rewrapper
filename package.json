@@ -1,8 +1,9 @@
 {
   "name": "the-great-rewrapper",
   "displayName": "The Great Rewrapper",
+  "icon": "icon.png",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.103.0"
   },
@@ -27,15 +28,20 @@
       "title": "The Great Rewrapper",
       "type": "object",
       "properties": {
-        "the-great-rewrapper.enable": {
+        "The Great Rewrapper.enable": {
           "type": "boolean",
           "default": true,
           "description": "Enable The Great Rewrapper"
         },
-        "the-great-rewrapper.column-length": {
+        "The Great Rewrapper.column-length": {
           "type": "number",
           "default": 100,
           "description": "Column Length"
+        },
+        "The Great Rewrapper.pattern": {
+          "type": "string",
+          "default": "**/html/source",
+          "description": "File Pattern"
         }
       }
     }
