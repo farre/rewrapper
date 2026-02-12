@@ -1,0 +1,14 @@
+[package]
+name = "the-great-rewrapper"
+version = "0.0.1"
+edition = "2021"
+license = "MIT"
+strip = "debuginfo"
+opt-level = "s"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+specfmt = { git = "https://github.com/farre/specfmt.git" }
+wit-bindgen = "0.24.0"

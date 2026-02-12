@@ -3,7 +3,7 @@
   "displayName": "The Great Rewrapper",
   "icon": "icon.png",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.103.0"
   },
@@ -11,7 +11,7 @@
     "Formatters"
   ],
   "publisher": "farrese",
-    "maintainers": [
+  "maintainers": [
     {
       "name": "Andreas Farre",
       "email": "andreas@farre.se"
@@ -21,8 +21,10 @@
     "type": "git",
     "url": "https://github.com/farre/rewrapper"
   },
-  "activationEvents": ["onLanguage:plaintext"],
-  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:plaintext"
+  ],
+  "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
       "title": "The Great Rewrapper",
@@ -42,11 +44,42 @@
           "type": "string",
           "default": "**/html/source",
           "description": "File Pattern"
+        },
+        "The Great Rewrapper.formatter": {
+          "type": "string",
+          "enum": [
+            "original",
+            "specfmt"
+          ],
+          "default": "original",
+          "description": "Formatter to use"
         }
       }
     }
   },
   "scripts": {
-    "install": "if cd node_modules/rewrapper; then git pull; else git clone https://github.com/domenic/rewrapper.git node_modules/rewrapper; fi"
+    "install": "if cd node_modules/rewrapper; then git pull; else git clone https://github.com/domenic/rewrapper.git node_modules/rewrapper; fi",
+    "build:wasm": "cargo build --target wasm32-unknown-unknown --release",
+    "build:wasm:dev": "cargo build --target wasm32-unknown-unknown",
+    "build:bindings": "npx wit2ts --outDir src src/rewrapper.wit",
+    "compile": "tsc src/rewrapper.ts --module node16 --target ES2020 --esModuleInterop --skipLibCheck --moduleResolution node16",
+    "build": "npm run build:bindings && npm run compile && npm run build:wasm",
+    "webpack": "webpack --mode production",
+    "webpack:watch": "webpack --mode development --watch",
+    "vscode:prepublish": "npm run package",
+    "package": "node esbuild.js --production",
+    "package:webpack": "npm run webpack",
+    "vsce": "npx --package vsce -- vsce package"
+  },
+  "dependencies": {
+    "@vscode/wasm-component-model": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.103.0",
+    "copy-webpack-plugin": "^13.0.1",
+    "esbuild": "^0.27.3",
+    "typescript": "^5.9.3",
+    "webpack": "^5.105.1",
+    "webpack-cli": "^6.0.1"
   }
 }

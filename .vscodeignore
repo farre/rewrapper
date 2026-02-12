@@ -8,3 +8,13 @@ vsc-extension-quickstart.md
 **/*.map
 **/eslint.config.mjs
 **/.vscode-test.*
+node_modules
+src/
+target/
+Cargo.lock
+Cargo.toml
+esbuild.js
+jsconfig.json
+package-lock.json
+tsconfig.json
+webpack.config.js

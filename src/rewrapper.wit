@@ -1,0 +1,11 @@
+package vscode:rewrapper;
+
+interface types {
+  rewrap-lines: func(lines: list<tuple<bool, string>>, diff-lines: u64, column-length: u8) -> list<string>;
+  parse-diff-line-numbers: func(diff: string, verbose: bool) -> list<u64>;
+  apply-diff: func(lines: list<tuple<bool, string>>, diff-line-numbers: list<u64>, verbose: bool) -> list<tuple<bool, string>>;
+}
+
+world rewrapper {
+  export types;
+}

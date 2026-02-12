@@ -35,7 +35,8 @@ The extension provides the following settings and default values:
 {
   "The Great Rewrapper.column-length": 100,
   "The Great Rewrapper.enable": true,
-  "The Great Rewrapper.pattern": "**/html/source"
+  "The Great Rewrapper.pattern": "**/html/source",
+  "The Great Rewrapper.formatter": "original"
 }
 ```
 
@@ -60,3 +61,12 @@ Examples:
 ```
 
 Default: `"**/html/source"`
+
+### Formatter
+
+The rewrapper implementation to use. Available options:
+
+- `"original"` - Uses the original rewrapper implementation from [domenic/rewrapper](https://github.com/domenic/rewrapper)
+- `"specfmt"` - Uses the specfmt rewrapper implementation from [domfarolino/specfmt](https://github.com/domfarolino/specfmt)
+
+Default: `"original"`
